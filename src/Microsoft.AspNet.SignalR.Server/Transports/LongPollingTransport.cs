@@ -9,7 +9,7 @@ using Microsoft.AspNet.Http;
 using Microsoft.AspNet.SignalR.Infrastructure;
 using Microsoft.AspNet.SignalR.Json;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.OptionsModel;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using System.Diagnostics.CodeAnalysis;
 
@@ -212,7 +212,7 @@ namespace Microsoft.AspNet.SignalR.Transports
 
         protected override async Task ProcessSendRequest()
         {
-            IReadableStringCollection form = await Context.Request.ReadFormAsync().PreserveCulture();
+            var form = await Context.Request.ReadFormAsync().PreserveCulture();
             string data = (string)form["data"] ?? Context.Request.Query["data"];
 
             if (Received != null)

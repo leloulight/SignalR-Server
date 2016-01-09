@@ -2,8 +2,13 @@
   "dependencies": {
     "SignalRSample.Web": "1.0.0",
     "Microsoft.AspNet.SignalR.Testing.Common": "1.0.0-*",
+<<<<<<< HEAD
     "Microsoft.AspNet.SignalR.Server": "3.0.0-rc1-final",
     "xunit.runner.aspnet": "2.0.0-aspnet-rc1-final",
+=======
+    "Microsoft.AspNet.SignalR.Server": "3.0.0-*",
+    "xunit.runner.aspnet": "2.0.0-aspnet-*",
+>>>>>>> refs/remotes/aspnet/dev
     "Moq": "4.2.1312.1622"
   },
   "compilationOptions": {
@@ -11,7 +16,15 @@
     "keyFile": "../../tools/Key.snk"
   },
   "frameworks": {
+<<<<<<< HEAD
     "dnx451": {}
   },
   "commands": {}
 }
+=======
+    "dnx451": { }
+  },
+  "commands": {
+  }
+}
+>>>>>>> refs/remotes/aspnet/dev

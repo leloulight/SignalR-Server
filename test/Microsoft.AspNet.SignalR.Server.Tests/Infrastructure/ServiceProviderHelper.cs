@@ -1,9 +1,8 @@
 using System;
-using System.Threading.Tasks;
 using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Hosting.Server;
+using Microsoft.AspNet.Http;
 using Microsoft.AspNet.Http.Features;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Microsoft.AspNet.SignalR.Tests
@@ -20,43 +19,29 @@ namespace Microsoft.AspNet.SignalR.Tests
 
         public static IServiceProvider CreateServiceProvider(Action<IServiceCollection> configure)
         {
-            var host = new WebHostBuilder()
-                .UseServer(new ServerFactory())
-                .UseStartup(
-                    _ => { },
-                    services =>
-                    {
-                        services.AddSignalR();
-                        configure(services);
-                        return services.BuildServiceProvider();
-                    });
-            return host.Build().ApplicationServices;
+            var builder = new WebApplicationBuilder()
+                .UseServer(new Server())
+                .Configure(_ => { })
+                .ConfigureServices(services =>
+                {
+                    services.AddSignalR();
+                    configure(services);
+                });
+            return builder.Build().Services;
         }
 
-        private class ServerFactory : IServerFactory
+        private class Server : IServer
         {
-            public IFeatureCollection Initialize(IConfiguration configuration)
+            IFeatureCollection IServer.Features { get; }
+            
+            public void Start<TContext>(IHttpApplication<TContext> application)
             {
-                return null;
+
             }
 
-            public IDisposable Start(IFeatureCollection serverFeatures, Func<IFeatureCollection, Task> application)
+            public void Dispose()
             {
-                return new StartInstance(application);
-            }
 
-            private class StartInstance : IDisposable
-            {
-                private readonly Func<IFeatureCollection, Task> _application;
-
-                public StartInstance(Func<IFeatureCollection, Task> application)
-                {
-                    _application = application;
-                }
-
-                public void Dispose()
-                {
-                }
             }
         }
     }

@@ -4,6 +4,7 @@
     "keyFile": "../../tools/Key.snk"
   },
   "shared": "*.cs",
+<<<<<<< HEAD
   "dependencies": {},
   "frameworks": {
     "dnx451": {
@@ -16,3 +17,19 @@
     }
   }
 }
+=======
+  "dependencies": {
+  },
+  "frameworks": {
+    "dnx451": {
+      "dependencies": {
+      }
+    },
+    "dnxcore50": {
+      "dependencies": {
+        "System.Runtime": "4.0.20-*"
+      }
+    }
+  }
+}
+>>>>>>> refs/remotes/aspnet/dev

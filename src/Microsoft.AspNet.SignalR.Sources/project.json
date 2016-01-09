@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "version": "3.0.0-rc1-final",
   "shared": "*.cs",
   "dependencies": {},
@@ -13,3 +14,19 @@
     }
   }
 }
+=======
+  "version": "3.0.0-*",
+  "shared": "*.cs",
+  "dependencies": {
+  },
+
+  "frameworks": {
+    "net451": { },
+    "dotnet5.4": {
+      "dependencies": {
+        "System.Runtime": "4.0.21-*"
+      }
+    }
+  }
+}
+>>>>>>> refs/remotes/aspnet/dev
